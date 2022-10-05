@@ -1,0 +1,32 @@
+{
+  "name": "challenge14_techblog",
+  "version": "0.0.0",
+  "description": "This is an assignment, Challenge 14 Tech Blog, for the UT Coding Bootcamp.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lawhornmatt/Ch14_TechBlog.git"
+  },
+  "author": "Matt Lawhorn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lawhornmatt/Ch14_TechBlog/issues"
+  },
+  "homepage": "https://github.com/Lawhornmatt/Ch14_TechBlog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.24.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

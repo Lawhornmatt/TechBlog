@@ -1,0 +1,188 @@
+/* @import url('A FONT TO USE'); */
+
+
+:root {
+
+    --main-1: #;
+    --main-2: #;
+    --main-3: #;
+    --main-4: #;
+    --main-5: #;
+    --main-6: #;
+
+    --sat-1: #;
+    --sat-2: #;
+    --sat-3: #;
+    --sat-4: #;
+    --sat-5: #;
+    --sat-6: #;
+
+    --undr-1: #;
+    --undr-2: #;
+    --undr-3: #;
+    --undr-4: #;
+    --undr-5: #;
+    --undr-6: #;
+
+    }
+    
+    
+/*  =========================  
+        GENERAL ELEMENTS
+    ========================= */
+    
+body {
+  background-color: var(--main-1);
+  color: var(--main-6);
+}
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    /* cursor: auto; */
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    /* cursor: auto; */
+}
+    
+    
+/*  =========================  
+      GENERAL CLASSES (think Bootstrap)
+    ========================= */
+
+/* === All Flexbox Function === */
+
+/* === All Borderstyle === */
+
+
+/*  =========================  
+        SPECIFIC CLASSES (think Javascript)
+    ========================= */
+
+/* == Main Background Colors == */
+
+.main1 {
+    background-color: var(--main-1);
+}
+
+.main2 {
+    background-color: var(--main-2);
+    color: var(--undr-1);
+}
+
+.main3 {
+    background-color: var(--main-3);
+    color: var(--undr-1);
+}
+
+.main4 {
+    background-color: var(--main-4);
+    color: var(--undr-1);
+}
+
+
+/* == Saturated Background Colors == */
+
+.sat1 {
+    background-color: var(--sat-1);
+}
+
+.sat2 {
+    background-color: var(--sat-2);
+}
+
+.sat3 {
+    background-color: var(--sat-3);
+    color: var(--undr-1);
+}
+
+.sat4 {
+    background-color: var(--sat-4);
+}
+
+.sat4Drk {
+    background-color: var(--sat-4);
+    color: var(--undr-1);
+}
+
+.sat5 {
+    background-color: var(--sat-5);
+}
+
+.sat6 {
+    background-color: var(--sat-6);
+    color: var(--undr-1);
+}
+
+/* == Undertoned Background Colors == */
+
+.undr1 {
+    background-color: var(--undr-1);
+}
+
+.undr2 {
+    background-color: var(--undr-2);
+}
+
+.undr3 {
+    background-color: var(--undr-3);
+}
+
+.undr4 {
+    background-color: var(--undr-4);
+}
+
+.undr5 {
+    background-color: var(--undr-5);
+}
+
+.undr6 {
+    background-color: var(--undr-6);
+}
+
+/* Other Classes */
+
+
+ /* ==== Image Classes ==== */
+
+.idealIMG {
+    display: block;
+    max-height:75vh;
+    width: auto;
+    height: auto;
+}
+
+.idealIMGsmol {
+    display: block;
+    max-height:25vh;
+    width: auto;
+    height: auto;
+}
+    
+/*  =========================  
+              IDs
+    ========================= */
+
+/* === HEADER === */
+
+/* === NAV === */
+
+/* === BODY === */
+/* Specific Button */
+/* Specific Div */
+
+/* === FOOTER === */
+
+
+/*  =========================  
+        ACCESSIBILITY
+    ========================= */
+@media (max-width: 690px) {
+    
+}
+
+@media (max-width: 500px) {
+    
+}
