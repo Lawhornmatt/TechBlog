@@ -146,7 +146,7 @@ a.nostyle:visited {
 
 /* Other Classes */
 
- /* ==== NavBar Classes ==== */
+/* ==== NavBar Classes ==== */
 
 .navStyling {
     background-color: var(--main-1);
@@ -182,7 +182,7 @@ a.nostyle:visited {
     /* cursor: auto; */
 }
 
- /* ==== Image Classes ==== */
+/* ==== Image Classes ==== */
 
 .idealIMG {
     display: block;
@@ -197,27 +197,42 @@ a.nostyle:visited {
     width: auto;
     height: auto;
 }
+
+/* ==== Post Classes ==== */
+
+.postRow {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.postHeader {
+    background-color: var(--main-1);
+    color: var(--main-6);
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.postContent {
+    background-color: var(--main-6);
+    color: var(--main-1);
+    border: medium solid var(--main-1);
+    padding: 1rem 1rem 0 1rem;
+}
     
 /*  =========================  
               IDs
     ========================= */
 
-/* === HEADER === */
-
 /* === NAV === */
+
 #mainNavBar {
     height: 15vh;
     /* display: flexbox;
     flex-direction: row;
     justify-content: space-between; */
 }
-
-/* === BODY === */
-/* Specific Button */
-/* Specific Div */
-
-/* === FOOTER === */
-
 
 /*  =========================  
         ACCESSIBILITY

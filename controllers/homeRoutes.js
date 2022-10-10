@@ -4,7 +4,7 @@ const {Generic} = require('../models');
 const bcrypt = require('bcrypt')
 
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     res.render('home', {
       logged_in: req.session.logged_in,
