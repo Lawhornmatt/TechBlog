@@ -17,10 +17,10 @@ Generic.init({
     foreignData: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: 'something_else',
-            key: 'id'
-        },
+        // references: {
+        //     model: 'something_else',
+        //     key: 'id'
+        // },
     }},
     {
     sequelize,

@@ -4,7 +4,8 @@
   "description": "This is an assignment, Challenge 14 Tech Blog, for the UT Coding Bootcamp.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon -e js,handlebars,css,html server.js" 
   },
   "repository": {
     "type": "git",

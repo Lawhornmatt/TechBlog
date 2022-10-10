@@ -26,7 +26,7 @@ const sess = {
 };
 app.use(session(sess));
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.set('json spaces', 2);

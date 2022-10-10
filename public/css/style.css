@@ -1,14 +1,14 @@
-/* @import url('A FONT TO USE'); */
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@800&display=swap');
 
 
 :root {
 
-    --main-1: #;
-    --main-2: #;
-    --main-3: #;
-    --main-4: #;
-    --main-5: #;
-    --main-6: #;
+    --main-1: #1b0a09;
+    --main-2: #A8190F;
+    --main-3: #DF3B28;
+    --main-4: #E8A551;
+    --main-5: #87AC97;
+    --main-6: #0F757A;
 
     --sat-1: #;
     --sat-2: #;
@@ -32,9 +32,11 @@
     ========================= */
     
 body {
-  background-color: var(--main-1);
-  color: var(--main-6);
+  background-color: var(--main-6);
+  color: var(--main-1);
+  font-family: 'Gemunu Libre', sans-serif;
 }
+
 a.nostyle:link {
     text-decoration: inherit;
     color: inherit;
@@ -144,6 +146,35 @@ a.nostyle:visited {
 
 /* Other Classes */
 
+ /* ==== NavBar Classes ==== */
+
+.navStyling {
+    background-color: var(--main-1);
+    color: var(--main-6);
+    font-family: 'Gemunu Libre', sans-serif;
+}
+
+.popOut {
+    background-color: var(--main-6);
+    color: var(--main-1);
+    width: 13%;
+    height: auto;
+    box-shadow: 10px 10px var(--main-2);
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.popOut:link {
+    text-decoration: inherit;
+    color: var(--main-1);
+    /* cursor: auto; */
+}
+
+.popOut:visited {
+    text-decoration: inherit;
+    color: var(--main-1);
+    /* cursor: auto; */
+}
 
  /* ==== Image Classes ==== */
 
@@ -168,6 +199,9 @@ a.nostyle:visited {
 /* === HEADER === */
 
 /* === NAV === */
+#mainNavBar {
+    height: 15vh;
+}
 
 /* === BODY === */
 /* Specific Button */

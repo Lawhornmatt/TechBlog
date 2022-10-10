@@ -1,48 +1,62 @@
 # Challenge 14 - TECH BLOG
+
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Bugs](https://img.shields.io/github/issues/Lawhornmatt/Ch14_TechBlog/bug.svg)](https://github.com/Lawhornmatt/Ch14_TechBlog/issues)
 
 ## TABLE OF CONTENTS:
 
-* [Description](#DESCRIPTION)
+* [Description](#description)
 
-* [Installation guide](#INSTALLATION) 
+* [Installation guide](#installation) 
 
-* [Usage Info](#USAGEINFO) 
+* [Usage Info](#usage) 
 
-* [Contribution Guidelines](#CONTRIBUTIONGUIDELINES) 
+* [Contribution Guidelines](#contribution) 
 
-* [Testing Instructions](#TESTINSTRUCTIONS) 
+* [Testing Instructions](#testing) 
 
-* [Questions](#QUESTIONS)
+* [Questions](#questions)
 
-* [Credits](#CREDIT)
+* [Credits](#credit)
 
-* [License](#LICENSE)
+* [License](#license)
 
+
+<a name="description"></a>
 
 ## DESCRIPTION:
 
 This is the ReadMe for Matt Lawhorn's Challenge 14: Tech Blog
 
-This is a solo project showcasing my knowledge of MVC (Model - View - Controller)
+This is a solo project showcasing my knowledge of MVC (Model - View - Controller) 
 
-<img src='INSERT PATH TO SCREENSHOT HERE' alt='A screenshot of my techblog'/>
+<img src='INSERT PATH TO SCREENSHOT HERE' alt='A screenshot of Code Wars'/>
+
+<a name="installation"></a>
 
 ## INSTALLATION:
 
-Visit it on Heroku to try it out
+In the future, Visit it on Heroku to try it out <a target="_blank" rel="noopener noreferrer" href="#">TBD</a>
 
-## USAGE INFO:
+<a name="usage"></a>
+
+## USAGE:
 
 TBD
 
-## CONTRIBUTION GUIDELINES:
+<a name="contribution"></a>
+
+## CONTRIBUTION:
 
 Sorry, this project is privately maintained.
 
-## TEST INSTRUCTIONS:
+<a name="testing"></a>
+
+## TESTING:
 
 Thank you, but no testing is needed at this time.
+
+<a name="questions"></a>
 
 ## QUESTIONS:
 
@@ -52,15 +66,21 @@ you can find my GitHub here: https://github.com/Lawhornmatt
 
 or email me here: fake@notreal.com
 
+<a name="credit"></a>
+
 ## CREDIT:
 
-This project was made in 2022 by Matt Lawhorn
+This project was made in 2022 by:
+
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/Lawhornmatt">Matthew Lawhorn</a>
+
+<a name="license"></a>
 
 ## LICENSE:
 
 This program is copyrighted under the MIT open source license.
 
-Copyright 2022 Group Two
+Copyright 2022 Matt Lawhorn
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
     
