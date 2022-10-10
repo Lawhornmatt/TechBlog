@@ -154,14 +154,20 @@ a.nostyle:visited {
     font-family: 'Gemunu Libre', sans-serif;
 }
 
+.navbar-nav {
+    flex-direction: row;
+}
+
 .popOut {
     background-color: var(--main-6);
     color: var(--main-1);
-    width: 13%;
+    min-width: 15%;
     height: auto;
     box-shadow: 10px 10px var(--main-2);
     border-radius: 1rem;
     text-align: center;
+    padding-left: .25rem;
+    padding-right: .25rem;
 }
 
 .popOut:link {
@@ -201,6 +207,9 @@ a.nostyle:visited {
 /* === NAV === */
 #mainNavBar {
     height: 15vh;
+    /* display: flexbox;
+    flex-direction: row;
+    justify-content: space-between; */
 }
 
 /* === BODY === */
