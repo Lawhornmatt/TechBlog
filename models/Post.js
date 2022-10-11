@@ -1,33 +1,33 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Generic extends Model {}
+class Post extends Model {}
 
-Generic.init({
+Post.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
     },
-    data: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    foreignData: {
+    userid: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: 'something_else',
-        //     key: 'id'
-        // },
+        references: {
+            model: 'user',
+            key: 'id'
+        },
+    },
+    postbody: {
+        type: DataTypes.STRING,
+        allowNull: false,
     }},
     {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'generic'
+    modelName: 'post'
 });
 
-module.exports = Generic;
+module.exports = Post;

@@ -228,6 +228,12 @@ a.nostyle:visited {
     border: medium solid var(--main-1);
     padding: 1rem 1rem 0 1rem;
 }
+
+/* ==== Button Classes ==== */
+
+.buttonMatt {
+    cursor: pointer;
+}
     
 /*  =========================  
               IDs
@@ -240,6 +246,20 @@ a.nostyle:visited {
     /* display: flexbox;
     flex-direction: row;
     justify-content: space-between; */
+}
+
+/* === LOGIN / SIGNUP === */
+
+#loginBox {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+}
+
+#signupBox {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
 }
 
 /*  =========================  

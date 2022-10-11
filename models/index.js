@@ -1,5 +1,9 @@
-const Generic = require('./Generic');
+const User = require('./User');
+const Post = require('./Post');
+
+Post.belongsTo(User, { foreignKey: 'userid' });
 
 module.exports = {
-    Generic
+    User,
+    Post
 };

@@ -1,9 +1,11 @@
 const sequelize = require('../config/connection');
-const genericData = require('./genericData');
+const userData = require('./userData');
+const postData = require('./postData');
 
 async function seedDatabase() {
     await sequelize.sync({ force: true });
-    await genericData();
+    await userData();
+    await postData();
 }
 
 seedDatabase();
