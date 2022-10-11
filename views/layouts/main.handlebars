@@ -31,20 +31,20 @@
   <body>
     {{!-- == NAV BAR == --}}
     <nav class="navbar navStyling" id="mainNavBar"> {{!--  navbar-expand  --}}
-      <a class="navbar-brand popOut" href="/">Tech Blog</a>
+      <a class="navbar-brand popOut" href="/about">Tech Blog</a>
     
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link nostyle mx-3" href="#">Home</a>
+          <a class="nav-link nostyle mx-3" href="/">Home</a>
         </li> 
         
         <li class="nav-item">
-          <a class="nav-link nostyle mx-3" href="#">Dashboard</a>
+          <a class="nav-link nostyle mx-3" href="/dashboard">Dashboard</a>
         </li> 
         {{#if logged_in}}
         <li class="nav-item">
-          <a class="nav-link nostyle mx-3" href="#">Log Out</a>
+          <a class="nav-link nostyle mx-3" href="/logout">Log Out</a>
         </li>
         {{else}}
         <li class="nav-item">
