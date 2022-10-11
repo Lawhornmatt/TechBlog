@@ -1,16 +1,18 @@
-<div class="row postRow">
-  {{#if (complexIf sess_username user.username)}}
-  <div class="postHeaderUser">
-    <p>{{posttitle}}</p>
-    <p>Posted by {{user.username}} on {{format_time createdAt}}</p>
+<a href="/post/{{id}}" class="nostyle">
+  <div class="row postRow">
+    {{#if (complexIf sess_username user.username)}}
+    <div class="postHeaderUser">
+      <p>{{posttitle}}</p>
+      <p>Posted by {{user.username}} on {{format_time createdAt}}</p>
+    </div>
+    {{else}}
+    <div class="postHeaderForeign">
+      <p>{{posttitle}}</p>
+      <p>Posted by {{user.username}} on {{format_time createdAt}}</p>
+    </div>
+    {{/if}}
+    <div class="postContent">
+      <p>{{postbody}}</p>
+    </div>
   </div>
-  {{else}}
-  <div class="postHeaderForeign">
-    <p>{{posttitle}}</p>
-    <p>Posted by {{user.username}} on {{format_time createdAt}}</p>
-  </div>
-  {{/if}}
-  <div class="postContent">
-    <p>{{postbody}}</p>
-  </div>
-</div>
+</a>

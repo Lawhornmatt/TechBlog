@@ -1,0 +1,22 @@
+  <main class="container-fluid mt-3">
+     <div class="row justify-content-around">
+      <div class="col-11 mb-3">
+        <div class="row postRow">
+          {{#if (complexIf edittedpostData.sess_username edittedpostData.user)}}
+          <div class="postHeaderUser">
+            <p>{{edittedpostData.posttitle}}</p>
+            <p>Posted by {{edittedpostData.user}} on {{format_time edittedpostData.createdAt}}</p>
+          </div>
+          {{else}}
+          <div class="postHeaderForeign">
+            <p>{{edittedpostData.posttitle}}</p>
+            <p>Posted by {{edittedpostData.user}} on {{format_time edittedpostData. createdAt}}</p>
+          </div>
+          {{/if}}
+          <div class="postContent">
+            <p>{{edittedpostData.postbody}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

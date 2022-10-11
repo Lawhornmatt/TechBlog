@@ -223,6 +223,75 @@ router.post('/post', async (req, res) => {
 });
 
   // ====================
+  //  /POST INDIVIDUAL
+  // ====================
+
+// GET to retreive a specific post and it's comments
+router.get('/post/:id', withAuth, async (req, res) => {
+  try {
+
+    const rawpostData = await Post.findOne({
+      include: [{
+        model: User,
+        attributes: ['username']
+      }],
+      where: {
+        id: req.params.id
+      }
+    });
+    const allpostData = rawpostData.get({ plain: true });
+
+    const edittedpostData = {
+      id: allpostData.id,
+      userid: allpostData.userid,
+      posttitle: allpostData.posttitle,
+      postbody: allpostData.postbody,
+      createdAt: allpostData.createdAt,
+      updatedAt: allpostData.updatedAt,
+      user: Object.values(allpostData.user)[0],
+      sess_username: req.session.username
+    };
+
+    console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
+
+    res.render('viewPost', {
+      logged_in: req.session.logged_in,
+      edittedpostData
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// POST to post to create a new post for that user
+router.post('/post/:id', async (req, res) => {
+  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  try {
+     
+      const postData = await Post.create({
+        userid: req.session.user_id,
+        posttitle: req.body.postTitle,
+        postbody: req.body.postBody
+      });
+
+      if (!postData) {
+          res
+              .status(400)
+              .json({ status: 'error', message: 'Failed to create new postData' })
+          return
+      };
+
+      req.session.save(() => {
+        res.json({ status: 'ok', message: `\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`})
+      });
+      console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
+  } catch (err) {
+      res.status(404).json(err);
+  }
+});
+
+  // ====================
   //  /ABOUT
   // ====================
 
