@@ -31,7 +31,7 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [8],
+            len: [4],
         },
     },
 }, {
@@ -52,4 +52,4 @@ User.init({
     modelName: 'user',
 });
 
-module.exports = User ;
+module.exports = User;

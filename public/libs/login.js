@@ -1,22 +1,3 @@
-
-  // ====================
-  //  QUERY SELECTORS
-  // ====================
-
-// Log In user
-if (document.querySelector('#logmein')) {
-  document
-      .querySelector('#logmein')
-      .addEventListener('click', loginPage);
-} 
-
-// Sign up new user
-if (document.querySelector('#signmeup')) {
-  document
-      .querySelector('#signmeup')
-      .addEventListener('click', signupPage);
-}
-
   // ====================
   //  LOG IN
   // ====================
@@ -24,20 +5,20 @@ if (document.querySelector('#signmeup')) {
 const loginPage = async (event) => {
   event.preventDefault();
 
-  const email = document.querySelector('#loginEmail').value.trim();
+  const username = document.querySelector('#loginUsername').value.trim();
   const password = document.querySelector('#loginPassword').value.trim();
 
-  if (email && password) {
+  if (username && password) {
     const response = await fetch('/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Log In Failed');
+      alert('Log In Failed: Response Not Okay');
     }
   }
 };
@@ -69,5 +50,23 @@ const signupPage = async (event) => {
   }
 };
     
+
+  // ====================
+  //  QUERY SELECTORS
+  // ====================
+
+// Log In user
+if (document.querySelector('#logmeinButton')) {
+  document
+      .querySelector('#logmeinButton')
+      .addEventListener('click', loginPage);
+} 
+
+// Sign up new user
+if (document.querySelector('#signmeupButton')) {
+  document
+      .querySelector('#signmeupButton')
+      .addEventListener('click', signupPage);
+}
 
   
