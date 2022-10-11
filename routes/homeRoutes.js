@@ -70,9 +70,22 @@ router.post('/login', async (req, res) => {
   }
 });
 
+  // ====================
+  //  /LOGOUT
+  // ====================
 
-
-
+// POST which destroys the session, logging out the user
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+      req.session.destroy(() => {
+          res.json({ message: 'Logged out' })
+          res.status(204).end();
+          console.log('Session Destroyed');
+      });
+  } else {
+      res.status(404).end();
+  }
+});
 
   // ====================
   //  /ABOUT
