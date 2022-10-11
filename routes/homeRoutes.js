@@ -82,6 +82,7 @@ router.post('/login', async (req, res) => {
       };
 
       req.session.save(() => {
+          req.session.user_id = userData.id;
           req.session.username = userData.username;
           req.session.logged_in = true;
 
@@ -125,6 +126,7 @@ router.post('/signup', async (req, res) => {
     });
 
     req.session.save(() => {
+        req.session.user_id = userData.id;
         req.session.username = userData.username;
         req.session.logged_in = true;
 
@@ -133,6 +135,86 @@ router.post('/signup', async (req, res) => {
 } catch (err) {
     res.status(400).json(err);
 }
+});
+
+  // ====================
+  //  /DASHBOARD
+  // ====================
+
+// GET to render the dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+
+    const rawpostData = await Post.findAll({
+      include: [{
+        model: User,
+        attributes: ['username']
+      }],
+      where: {
+        userid: req.session.user_id
+      }
+    });
+    const allpostData = rawpostData.map((post) => post.get({ plain: true }));
+
+    const edittedpostData = allpostData.map((post) => post = {
+      id: post.id,
+      userid: post.userid,
+      posttitle: post.posttitle,
+      postbody: post.postbody,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+      user: post.user,
+      sess_username: req.session.username
+    });
+
+    console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
+
+    res.render('home', {
+      logged_in: req.session.logged_in,
+      edittedpostData
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// POST to authenticate and log-in the user
+router.post('/dashboard', async (req, res) => {
+  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  try {
+      const username = req.body.username;
+      const password = req.body.password;
+
+      //find if name exists in db
+      const userData = await User.findOne({
+          where: {
+              username: username,
+          }
+      });
+
+      if (!userData) {
+          res
+              .status(400)
+              .json({ status: 'error', message: 'User with that username cannot be found' })
+          return
+      };
+
+      if (await bcrypt.compare(password, userData.password) === false) {
+          res.json({ status: 'error', message: 'Password Invalid, Cannot Authenticate' })
+      };
+
+      req.session.save(() => {
+          req.session.username = userData.username;
+          req.session.logged_in = true;
+
+          res.json({ status: 'ok', message: `${userData.username} is logged in!` })
+      });
+      // console.log(`\x1b[32mUser: ${req.session.user_id} has logged in`);
+      console.log(`\x1b[32mUser: ${req.body.username} has logged in\x1b[0m`);
+  } catch (err) {
+      res.status(404).json(err);
+  }
 });
 
   // ====================

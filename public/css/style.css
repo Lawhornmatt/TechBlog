@@ -144,8 +144,6 @@ a.nostyle:visited {
     background-color: var(--undr-6);
 }
 
-/* Other Classes */
-
 /* ==== NavBar Classes ==== */
 
 .navStyling {
@@ -233,6 +231,12 @@ a.nostyle:visited {
 
 .buttonMatt {
     cursor: pointer;
+}
+
+/* Other Classes */
+
+.shadowtiseMeCapt {
+    box-shadow: 6px 6px var(--main-2);
 }
     
 /*  =========================  
