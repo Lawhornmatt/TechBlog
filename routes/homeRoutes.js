@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
     const edittedpostData = allpostData.map((post) => post = {
       id: post.id,
       userid: post.userid,
+      posttitle: post.posttitle,
       postbody: post.postbody,
       createdAt: post.createdAt,
       updatedAt: post.updatedAt,
