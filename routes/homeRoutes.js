@@ -141,7 +141,7 @@ router.post('/signup', async (req, res) => {
   //  /DASHBOARD
   // ====================
 
-// GET to render the dashboard
+// GET to render the dashboard, showing only that user's posts and a button to make a new post
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
 
@@ -179,8 +179,22 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-// POST to authenticate and log-in the user
-router.post('/dashboard', async (req, res) => {
+  // ====================
+  //  /POST
+  // ====================
+
+// GET to render the write-a-post form
+router.get('/post', withAuth, (req, res) => {
+  try {
+    res.render('post');
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// POST to post to create a new post for that user
+router.post('/post', async (req, res) => {
   console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
       const username = req.body.username;
