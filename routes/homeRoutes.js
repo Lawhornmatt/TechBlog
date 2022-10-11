@@ -186,7 +186,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // GET to render the write-a-post form
 router.get('/post', withAuth, (req, res) => {
   try {
-    res.render('post');
+    res.render('post', {
+      logged_in: req.session.logged_in,
+    });
     
   } catch (err) {
     res.status(500).json(err);
@@ -197,35 +199,24 @@ router.get('/post', withAuth, (req, res) => {
 router.post('/post', async (req, res) => {
   console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
-      const username = req.body.username;
-      const password = req.body.password;
-
-      //find if name exists in db
-      const userData = await User.findOne({
-          where: {
-              username: username,
-          }
+     
+      const postData = await Post.create({
+        userid: req.session.user_id,
+        posttitle: req.body.postTitle,
+        postbody: req.body.postBody
       });
 
-      if (!userData) {
+      if (!postData) {
           res
               .status(400)
-              .json({ status: 'error', message: 'User with that username cannot be found' })
+              .json({ status: 'error', message: 'Failed to create new postData' })
           return
       };
 
-      if (await bcrypt.compare(password, userData.password) === false) {
-          res.json({ status: 'error', message: 'Password Invalid, Cannot Authenticate' })
-      };
-
       req.session.save(() => {
-          req.session.username = userData.username;
-          req.session.logged_in = true;
-
-          res.json({ status: 'ok', message: `${userData.username} is logged in!` })
+        res.json({ status: 'ok', message: `\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`})
       });
-      // console.log(`\x1b[32mUser: ${req.session.user_id} has logged in`);
-      console.log(`\x1b[32mUser: ${req.body.username} has logged in\x1b[0m`);
+      console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
