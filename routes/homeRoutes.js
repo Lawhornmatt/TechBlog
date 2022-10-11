@@ -230,34 +230,65 @@ router.post('/post', async (req, res) => {
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
 
+    // Get data of that individual post. Include user data
     const rawpostData = await Post.findOne({
-      include: [{
-        model: User,
-        attributes: ['username']
-      }],
+      include: [
+        { model: User,
+          attributes: ['username']
+        }
+      ],
       where: {
         id: req.params.id
       }
     });
+
+    // Get rid of trash data from that post data
     const allpostData = rawpostData.get({ plain: true });
 
+    // Make the user data "handlebars palletable"
+    // Basically, user comes as an object and we want a plain name for comparisons / display
     const edittedpostData = {
       id: allpostData.id,
       userid: allpostData.userid,
+      user: allpostData.user.username,
       posttitle: allpostData.posttitle,
       postbody: allpostData.postbody,
       createdAt: allpostData.createdAt,
       updatedAt: allpostData.updatedAt,
-      user: Object.values(allpostData.user)[0],
       sess_username: req.session.username
     };
 
+    // Same deal with comments, get all comments with matching post ID & the user data
+    const rawcommentData = await Comment.findAll({
+      include: [
+        { model: User,
+          attributes: ['username']
+        }
+      ],
+      where: {
+        postid: req.params.id
+      }
+    });
+
+    const commentData = rawcommentData.map((comment) => comment = {
+
+      id: comment.id,
+      commenterid: comment.userid,
+      commenter: comment.user.username,
+      opid: allpostData.userid,
+      sess_username: req.session.username,
+      commentbody: comment.commentbody,
+      updatedAt: comment.updatedAt
+    });
+    
+    console.log(`\x1b[46m commentData: ${JSON.stringify(commentData)}\x1b[0m`);
     console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
     console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
 
     res.render('viewPost', {
       logged_in: req.session.logged_in,
-      edittedpostData
+      edittedpostData,
+      commentData
     });
   } catch (err) {
     res.status(500).json(err);

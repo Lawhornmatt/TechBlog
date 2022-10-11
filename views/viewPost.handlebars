@@ -17,6 +17,9 @@
             <p>{{edittedpostData.postbody}}</p>
           </div>
         </div>
+        {{#each commentData as |comment|}}
+        {{>comntGenr}}
+        {{/each}}
       </div>
     </div>
   </main>

@@ -1,0 +1,16 @@
+<div class="row postRow">
+  {{#if (complexIf commenter sess_username)}}
+  <div class="postHeaderUser">
+    <p>#{{@index}} {{#if (complexIf commenterid opid)}}[OP]{{/if}} {{commenter}} says:</p>
+    <p>Posted on {{format_time updatedAt}}</p>
+  </div>
+  {{else}}
+  <div class="postHeaderUser">
+    <p>#{{@index}} {{#if (complexIf commenterid opid)}}[OP]{{/if}} {{commenter}} says:</p>
+    <p>Posted on {{format_time updatedAt}}</p>
+  </div>
+  {{/if}}
+  <div class="postContent">
+    <p>{{commentbody}}</p>
+  </div>
+</div>
