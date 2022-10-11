@@ -170,7 +170,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
     console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
 
-    res.render('home', {
+    res.render('dashboard', {
       logged_in: req.session.logged_in,
       edittedpostData
     });

@@ -1,0 +1,16 @@
+  <main class="container-fluid mt-3">
+     <div class="row justify-content-around">
+      <div class="col-11 mb-3">
+        {{#each edittedpostData as |post|}}
+        {{>postGenr}}
+        {{else}}
+        <p>The site is dead; There are no posts to display :(</p>
+        {{/each}}
+      </div>
+      <div class="col-3 buttonMatt" id="newpostButton">
+        <div class="postHeaderUser d-flex justify-content-center">
+          <p>Create New Post</p>
+        </div>
+      </div>
+    </div>
+  </main>
