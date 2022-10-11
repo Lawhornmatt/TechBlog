@@ -28,6 +28,8 @@
   //What it does
   
   // === Specific Part of Function ===
+
+  // console.log(logged_in);
   
   
   // ====================

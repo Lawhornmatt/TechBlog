@@ -7,15 +7,30 @@ const bcrypt = require('bcrypt');
 router.get('/', async (req, res) => {
   try {
 
-    const rawpostData = await Post.findAll();
+    const rawpostData = await Post.findAll({
+      include: [{
+        model: User,
+        attributes: ['username']
+      }]
+    });
     const allpostData = rawpostData.map((post) => post.get({ plain: true }));
 
-    // console.log(`\x1b[32m allpostData: ${JSON.stringify(allpostData)}\x1b[0m`);
+    const edittedpostData = allpostData.map((post) => post = {
+      id: post.id,
+      userid: post.userid,
+      postbody: post.postbody,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+      user: post.user,
+      sess_username: req.session.username
+    });
+
+    console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
 
     res.render('home', {
       logged_in: req.session.logged_in,
-      sess_username: req.session.username,
-      allpostData
+      edittedpostData
     });
   } catch (err) {
     res.status(500).json(err);
