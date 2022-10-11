@@ -6,8 +6,16 @@ const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
   try {
+
+    const rawpostData = await Post.findAll();
+    const allpostData = rawpostData.map((post) => post.get({ plain: true }));
+
+    // console.log(`\x1b[32m allpostData: ${JSON.stringify(allpostData)}\x1b[0m`);
+
     res.render('home', {
       logged_in: req.session.logged_in,
+      sess_username: req.session.username,
+      allpostData
     });
   } catch (err) {
     res.status(500).json(err);
@@ -34,7 +42,7 @@ router.get('/login', (req, res) => {
 
 // POST to authenticate and log-in the user
 router.post('/login', async (req, res) => {
-  console.log(`\x1b[32mData: ${JSON.stringify(req.body)}\x1b[0m`);
+  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
       const username = req.body.username;
       const password = req.body.password;
