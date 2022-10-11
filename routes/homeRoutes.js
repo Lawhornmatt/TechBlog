@@ -112,6 +112,30 @@ router.post('/logout', (req, res) => {
 });
 
   // ====================
+  //  /SIGNUP
+  // ====================
+
+// POST which creates a new user in the database and returns one to the home page
+router.post('/signup', async (req, res) => {
+  try {
+    const userData = await User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+    });
+
+    req.session.save(() => {
+        req.session.username = userData.username;
+        req.session.logged_in = true;
+
+        res.json({ status: 'ok', message: `Welcome, ${userData.first_name}, to my TechBlog` })
+    });
+} catch (err) {
+    res.status(400).json(err);
+}
+});
+
+  // ====================
   //  /ABOUT
   // ====================
 

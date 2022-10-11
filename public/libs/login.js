@@ -30,13 +30,18 @@ const loginPage = async (event) => {
 const signupPage = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector('#signupName').value.trim();
+  const username = document.querySelector('#signupUsername').value.trim();
   const email = document.querySelector('#signupEmail').value.trim();
   const password = document.querySelector('#signupPassword').value.trim();
-  const RETYPEpassword = document.querySelector('#retypePassword').value.trim();
+  const RETYPEpassword = document.querySelector('#confirmPassword').value.trim();
+
+  if (password != RETYPEpassword) {
+    alert('Passwords do not match');
+    return;
+  }
 
   if (username && email && password) {
-    const response = await fetch('/register', {
+    const response = await fetch('/signup', {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
