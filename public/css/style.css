@@ -233,6 +233,13 @@ a.nostyle:visited {
     cursor: pointer;
 }
 
+.nobuttonstyle {
+    background-color: var(--main-1);
+    color: var(--main-6);
+    height: auto;
+    border: none;
+}
+
 /* Other Classes */
 
 .shadowtiseMeCapt {

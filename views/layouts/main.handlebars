@@ -42,7 +42,7 @@
         </li> 
         {{#if logged_in}}
         <li class="nav-item" id="logoutButton">
-          <a class="nav-link nostyle mx-3" href="/logout">Log Out</a>
+          <form action="/logout" method="POST" class=""><button class="nav-link nobuttonstyle mx-3">Log Out</button></form>
         </li>
         {{else}}
         <li class="nav-item">
