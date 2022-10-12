@@ -26,8 +26,8 @@ router.get('/', async (req, res) => {
       sess_username: req.session.username
     });
 
-    console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
-    console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
+    // console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    // console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
 
     res.render('home', {
       logged_in: req.session.logged_in,
@@ -60,7 +60,7 @@ router.get('/login', (req, res) => {
 
 // POST to authenticate and log-in the user
 router.post('/login', async (req, res) => {
-  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  // console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
       const username = req.body.username;
       const password = req.body.password;
@@ -91,7 +91,7 @@ router.post('/login', async (req, res) => {
           res.json({ status: 'ok', message: `${userData.username} is logged in!` })
       });
       // console.log(`\x1b[32mUser: ${req.session.user_id} has logged in`);
-      console.log(`\x1b[32mUser: ${req.body.username} has logged in\x1b[0m`);
+      // console.log(`\x1b[32mUser: ${req.body.username} has logged in\x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
@@ -175,8 +175,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
       sess_username: req.session.username
     });
 
-    console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
-    console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
+    // console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    // console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
 
     res.render('dashboard', {
       logged_in: req.session.logged_in,
@@ -207,7 +207,7 @@ router.get('/post', withAuth, (req, res) => {
 
 // POST to post to create a new post for that user
 router.post('/post', async (req, res) => {
-  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  // console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
      
       const postData = await Post.create({
@@ -226,7 +226,7 @@ router.post('/post', async (req, res) => {
       req.session.save(() => {
         res.json({ status: 'ok', message: `\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`})
       });
-      console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
+      // console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
@@ -293,10 +293,10 @@ router.get('/post/:id', async (req, res) => {
       updatedAt: comment.updatedAt
     });
     
-    console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
-    console.log(`\x1b[46m commentData: ${JSON.stringify(commentData)}\x1b[0m`);
-    console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
-    console.log(`\x1b[34m Current Post: ${edittedpostData.id}\x1b[0m`);
+    // console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    // console.log(`\x1b[46m commentData: ${JSON.stringify(commentData)}\x1b[0m`);
+    // console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
+    // console.log(`\x1b[34m Current Post: ${edittedpostData.id}\x1b[0m`);
 
     res.render('viewPost', {
       logged_in: req.session.logged_in,
@@ -313,7 +313,7 @@ router.get('/post/:id', async (req, res) => {
 
 // POST to post to create a new post for that user
 router.post('/post/:id', async (req, res) => {
-  console.log(`\x1b[32m Init Post Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  // console.log(`\x1b[32m Init Post Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
      
       const postData = await Post.create({
@@ -332,7 +332,7 @@ router.post('/post/:id', async (req, res) => {
       req.session.save(() => {
         res.json({ status: 'ok', message: `\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`})
       });
-      console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
+      // console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
@@ -346,7 +346,7 @@ router.post('/post/:id', async (req, res) => {
   
 // PUT to change the data for that post
 router.put('/edit', async (req, res) => {
-  console.log(`\x1b[32m Init Post Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  // console.log(`\x1b[32m Init Post Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
       const postData = await Post.update(
         {
@@ -370,7 +370,7 @@ router.put('/edit', async (req, res) => {
       req.session.save(() => {
         res.json({ status: 'ok', message: `\x1b[32m Editted Post: '${postData.posttitle}' \x1b[0m`})
       });
-      console.log(`\x1b[32m Editted Post: '${postData.posttitle}' \x1b[0m`);
+      // console.log(`\x1b[32m Editted Post: '${postData.posttitle}' \x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
@@ -378,7 +378,7 @@ router.put('/edit', async (req, res) => {
   
 // DELETE to destroy that post for good
 router.delete('/edit', async (req, res) => {
-  console.log(`\x1b[32m Going to delete post: ${req.session.last_viewed_post}\x1b[0m`);
+  // console.log(`\x1b[32m Going to delete post: ${req.session.last_viewed_post}\x1b[0m`);
   try {
       Post.destroy(
         {
@@ -390,7 +390,7 @@ router.delete('/edit', async (req, res) => {
       req.session.save(() => {
         res.json({ status: 'ok', message: `\x1b[32m Deleted Post! \x1b[0m`})
       });
-      console.log(`\x1b[32m Deleted Post! \x1b[0m`);
+      // console.log(`\x1b[32m Deleted Post! \x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
@@ -434,9 +434,9 @@ router.get('/edit/:id', async (req, res) => {
       sess_username: req.session.username
     };
     
-    console.log(`\x1b[32m [GET EDIT] edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
-    console.log(`\x1b[34m [GET EDIT] Current User: ${req.session.username}\x1b[0m`);
-    console.log(`\x1b[34m [GET EDIT] Previous Post: ${edittedpostData.id}\x1b[0m`);
+    // console.log(`\x1b[32m [GET EDIT] edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    // console.log(`\x1b[34m [GET EDIT] Current User: ${req.session.username}\x1b[0m`);
+    // console.log(`\x1b[34m [GET EDIT] Previous Post: ${edittedpostData.id}\x1b[0m`);
 
     res.render('editPost', {
       logged_in: req.session.logged_in,
@@ -458,7 +458,7 @@ router.get('/edit/:id', async (req, res) => {
 
 // GET to render the write-a-comment form
 router.get('/comment', withAuth, (req, res) => {
-  console.log(`\x1b[32m PostID to be Commented: ${req.session.last_viewed_post}\x1b[0m`);
+  // console.log(`\x1b[32m PostID to be Commented: ${req.session.last_viewed_post}\x1b[0m`);
   try {
     res.render('comment', {
       logged_in: req.session.logged_in,
@@ -471,7 +471,7 @@ router.get('/comment', withAuth, (req, res) => {
 
 // POST to comment to create a new comment for that post
 router.post('/comment', async (req, res) => {
-  console.log(`\x1b[32m Init Comment Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  // console.log(`\x1b[32m Init Comment Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
      
       const commentData = await Comment.create({
@@ -490,7 +490,7 @@ router.post('/comment', async (req, res) => {
       req.session.save(() => {
         res.json({ status: 'ok', message: `\x1b[32m New Comment #: '${commentData.id}' is created\x1b[0m`})
       });
-      console.log(`\x1b[32m New Comment #: '${commentData.id}' is created\x1b[0m`);
+      // console.log(`\x1b[32m New Comment #: '${commentData.id}' is created\x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
