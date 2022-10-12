@@ -65,6 +65,50 @@ const writeNewComment = async (event) => {
 };
 
   // ====================
+  //  EDIT POST
+  // ====================
+  
+const editPost = async (event) => {
+  event.preventDefault();
+
+  const editTitle = document.querySelector('#editTitle').value.trim();
+  const editBody = document.querySelector('#editBody').value.trim();
+
+  if (editTitle && editBody) {
+    const response = await fetch('/edit', {
+      method: 'PUT',
+      body: JSON.stringify({ editTitle, editBody }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert('Post Edit cannot be made');
+    }
+  }
+};
+
+  // ====================
+  //  DELETE POST
+  // ====================
+  
+const deletePost = async (event) => {
+  event.preventDefault();
+
+  const response = await fetch('/edit', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Post Cannot Be Deleted');
+  }
+};
+
+  // ====================
   //  QUERY SELECTORS
   // ====================
 
@@ -82,10 +126,24 @@ if (document.querySelector('#newpostButton')) {
       .addEventListener('click', writeNewPost);
 } 
 
-// New Post Button
+// New Comment Button
 if (document.querySelector('#newcommentButton')) {
   document
       .querySelector('#newcommentButton')
       .addEventListener('click', writeNewComment);
+} 
+
+// Edit Post Button
+if (document.querySelector('#editpostButton')) {
+  document
+      .querySelector('#editpostButton')
+      .addEventListener('click', editPost);
+} 
+
+// Delete Post Button
+if (document.querySelector('#deletepostButton')) {
+  document
+      .querySelector('#deletepostButton')
+      .addEventListener('click', deletePost);
 } 
 

@@ -38,6 +38,8 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+
   // ====================
   //  /LOGIN
   // ====================
@@ -95,6 +97,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+
   // ====================
   //  /LOGOUT
   // ====================
@@ -111,6 +115,8 @@ router.post('/logout', (req, res) => {
       res.status(404).end();
   }
 });
+
+
 
   // ====================
   //  /SIGNUP
@@ -136,6 +142,8 @@ router.post('/signup', async (req, res) => {
     res.status(400).json(err);
 }
 });
+
+
 
   // ====================
   //  /DASHBOARD
@@ -179,6 +187,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+
+
   // ====================
   //  /POST
   // ====================
@@ -221,6 +231,8 @@ router.post('/post', async (req, res) => {
       res.status(404).json(err);
   }
 });
+
+
 
   // ====================
   //  /POST INDIVIDUAL
@@ -326,6 +338,120 @@ router.post('/post/:id', async (req, res) => {
   }
 });
 
+
+
+  // ====================
+  //  /EDIT (POST)
+  // ====================
+  
+// PUT to change the data for that post
+router.put('/edit', async (req, res) => {
+  console.log(`\x1b[32m Init Post Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  try {
+      const postData = await Post.update(
+        {
+        posttitle: req.body.editTitle,
+        postbody: req.body.editBody
+        },
+        {
+          where: {
+            id: req.session.last_viewed_post,
+          },
+        }
+      );
+
+      if (!postData) {
+          res
+              .status(400)
+              .json({ status: 'error', message: 'Failed to find post to edit' })
+          return
+      };
+
+      req.session.save(() => {
+        res.json({ status: 'ok', message: `\x1b[32m Editted Post: '${postData.posttitle}' \x1b[0m`})
+      });
+      console.log(`\x1b[32m Editted Post: '${postData.posttitle}' \x1b[0m`);
+  } catch (err) {
+      res.status(404).json(err);
+  }
+});
+  
+// DELETE to destroy that post for good
+router.delete('/edit', async (req, res) => {
+  console.log(`\x1b[32m Going to delete post: ${req.session.last_viewed_post}\x1b[0m`);
+  try {
+      Post.destroy(
+        {
+          where: {
+            id: req.session.last_viewed_post,
+          },
+        }
+      );
+      req.session.save(() => {
+        res.json({ status: 'ok', message: `\x1b[32m Deleted Post! \x1b[0m`})
+      });
+      console.log(`\x1b[32m Deleted Post! \x1b[0m`);
+  } catch (err) {
+      res.status(404).json(err);
+  }
+});
+
+// GET to render the edit post form filled with the post's data
+router.get('/edit/:id', async (req, res) => {
+  try {
+
+    // Get data of that individual post. Include user data
+    const rawpostData = await Post.findOne({
+      include: [
+        { model: User,
+          attributes: ['username']
+        }
+      ],
+      where: {
+        id: req.params.id
+      }
+    });
+
+    // Get rid of trash data from that post data
+    const allpostData = rawpostData.get({ plain: true });
+
+    // Disallow someone to guess post ID in the url and edit it when it is not theirs
+    if (req.session.user_id != allpostData.userid) {
+      res.redirect('/');
+      return;
+    }
+
+    // Make the user data "handlebars palletable"
+    // Basically, user comes as an object and we want a plain name for comparisons / display
+    const edittedpostData = {
+      id: allpostData.id,
+      userid: allpostData.userid,
+      user: allpostData.user.username,
+      posttitle: allpostData.posttitle,
+      postbody: allpostData.postbody,
+      createdAt: allpostData.createdAt,
+      updatedAt: allpostData.updatedAt,
+      sess_username: req.session.username
+    };
+    
+    console.log(`\x1b[32m [GET EDIT] edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    console.log(`\x1b[34m [GET EDIT] Current User: ${req.session.username}\x1b[0m`);
+    console.log(`\x1b[34m [GET EDIT] Previous Post: ${edittedpostData.id}\x1b[0m`);
+
+    res.render('editPost', {
+      logged_in: req.session.logged_in,
+      edittedpostData,
+    });
+    req.session.save(() => {
+      req.session.last_viewed_post = edittedpostData.id;
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
   // ====================
   //  /COMMENT
   // ====================
@@ -369,6 +495,8 @@ router.post('/comment', async (req, res) => {
       res.status(404).json(err);
   }
 });
+
+
 
   // ====================
   //  /ABOUT
