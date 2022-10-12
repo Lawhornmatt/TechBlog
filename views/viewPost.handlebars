@@ -4,7 +4,10 @@
         <div class="row postRow shadowtiseMeCapt">
           {{#if (complexIf edittedpostData.sess_username edittedpostData.user)}}
           <div class="postHeaderUser">
-            <p  class="text-wrap text-break">{{edittedpostData.posttitle}}</p>
+            <div class="d-flex">
+              <p  class="text-wrap text-break">{{edittedpostData.posttitle}}</p>
+              <a href="/edit/{{edittedpostData.id}}" class="editButton">Edit</a>
+            </div>
             <p>Posted by {{edittedpostData.user}} on {{format_time edittedpostData.createdAt}}</p>
           </div>
           {{else}}

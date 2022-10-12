@@ -22,7 +22,7 @@
     --undr-1: #;
     --undr-2: #;
     --undr-3: #;
-    --undr-4: #;
+    --undr-4: #664a27;
     --undr-5: #;
     --undr-6: #;
 
@@ -253,6 +253,21 @@ a.nostyle:visited {
 
 .linkDiv {
     width: 100%;
+}
+
+.editButton {
+    margin-left: 1rem;
+    color: var(--undr-4);
+}
+
+.editButton:link {
+    text-decoration: inherit;
+    color: var(--undr-4);
+}
+
+.editButton:visited {
+    text-decoration: inherit;
+    color: var(--undr-4);
 }
 
 /* Other Classes */
