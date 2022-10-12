@@ -227,7 +227,7 @@ router.post('/post', async (req, res) => {
   // ====================
 
 // GET to retreive a specific post and it's comments
-router.get('/post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
 
     // Get data of that individual post. Include user data

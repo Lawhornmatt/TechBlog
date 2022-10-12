@@ -1,11 +1,11 @@
-<div class="row postRow">
+<div class="row postRow col-10">
   {{#if (complexIf commenter sess_username)}}
   <div class="postHeaderUser">
     <p>#{{@index}} {{#if (complexIf commenterid opid)}}[OP]{{/if}} {{commenter}} says:</p>
     <p>Posted on {{format_time updatedAt}}</p>
   </div>
   {{else}}
-  <div class="postHeaderUser">
+  <div class="postHeaderForeign">
     <p>#{{@index}} {{#if (complexIf commenterid opid)}}[OP]{{/if}} {{commenter}} says:</p>
     <p>Posted on {{format_time updatedAt}}</p>
   </div>
