@@ -41,6 +41,30 @@ const writeNewPost = async (event) => {
 };
 
   // ====================
+  //  NEW COMMENT
+  // ====================
+  
+const writeNewComment = async (event) => {
+  event.preventDefault();
+
+  const commentBody = document.querySelector('#commentBody').value.trim();
+
+  if (commentBody) {
+    const response = await fetch('/comment', {
+      method: 'POST',
+      body: JSON.stringify({ commentBody }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert('Comment cannot be made');
+    }
+  }
+};
+
+  // ====================
   //  QUERY SELECTORS
   // ====================
 
@@ -56,5 +80,12 @@ if (document.querySelector('#newpostButton')) {
   document
       .querySelector('#newpostButton')
       .addEventListener('click', writeNewPost);
+} 
+
+// New Post Button
+if (document.querySelector('#newcommentButton')) {
+  document
+      .querySelector('#newcommentButton')
+      .addEventListener('click', writeNewComment);
 } 
 

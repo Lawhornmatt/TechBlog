@@ -281,14 +281,18 @@ router.get('/post/:id', async (req, res) => {
       updatedAt: comment.updatedAt
     });
     
-    console.log(`\x1b[46m commentData: ${JSON.stringify(commentData)}\x1b[0m`);
     console.log(`\x1b[32m edittedpostData: ${JSON.stringify(edittedpostData)}\x1b[0m`);
+    console.log(`\x1b[46m commentData: ${JSON.stringify(commentData)}\x1b[0m`);
     console.log(`\x1b[34m Current User: ${req.session.username}\x1b[0m`);
+    console.log(`\x1b[34m Current Post: ${edittedpostData.id}\x1b[0m`);
 
     res.render('viewPost', {
       logged_in: req.session.logged_in,
       edittedpostData,
       commentData
+    });
+    req.session.save(() => {
+      req.session.last_viewed_post = edittedpostData.id;
     });
   } catch (err) {
     res.status(500).json(err);
@@ -297,7 +301,7 @@ router.get('/post/:id', async (req, res) => {
 
 // POST to post to create a new post for that user
 router.post('/post/:id', async (req, res) => {
-  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  console.log(`\x1b[32m Init Post Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
      
       const postData = await Post.create({
@@ -328,6 +332,7 @@ router.post('/post/:id', async (req, res) => {
 
 // GET to render the write-a-comment form
 router.get('/comment', withAuth, (req, res) => {
+  console.log(`\x1b[32m PostID to be Commented: ${req.session.last_viewed_post}\x1b[0m`);
   try {
     res.render('comment', {
       logged_in: req.session.logged_in,
@@ -340,26 +345,26 @@ router.get('/comment', withAuth, (req, res) => {
 
 // POST to comment to create a new comment for that post
 router.post('/comment', async (req, res) => {
-  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  console.log(`\x1b[32m Init Comment Body Data: ${JSON.stringify(req.body)}\x1b[0m`);
   try {
      
-      const postData = await Comment.create({
+      const commentData = await Comment.create({
         userid: req.session.user_id,
-        posttitle: req.body.postTitle,
-        postbody: req.body.postBody
+        postid: req.session.last_viewed_post,
+        commentbody: req.body.commentBody
       });
 
-      if (!postData) {
+      if (!commentData) {
           res
               .status(400)
-              .json({ status: 'error', message: 'Failed to create new postData' })
+              .json({ status: 'error', message: 'Failed to create new commentData' })
           return
       };
 
       req.session.save(() => {
-        res.json({ status: 'ok', message: `\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`})
+        res.json({ status: 'ok', message: `\x1b[32m New Comment #: '${commentData.id}' is created\x1b[0m`})
       });
-      console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
+      console.log(`\x1b[32m New Comment #: '${commentData.id}' is created\x1b[0m`);
   } catch (err) {
       res.status(404).json(err);
   }
