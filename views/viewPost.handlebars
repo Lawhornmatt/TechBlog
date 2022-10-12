@@ -20,6 +20,13 @@
         {{#each commentData as |comment|}}
         {{>comntGenr}}
         {{/each}}
+        {{#if logged_in}}
+        <a href="/comment" class="nostyle">
+          <div class="postHeaderUser d-flex justify-content-center">
+            <p>Write a Comment</p>
+          </div>
+        </a>
+        {{/if}}
       </div>
     </div>
   </main>

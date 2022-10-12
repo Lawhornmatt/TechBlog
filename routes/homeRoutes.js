@@ -323,6 +323,49 @@ router.post('/post/:id', async (req, res) => {
 });
 
   // ====================
+  //  /COMMENT
+  // ====================
+
+// GET to render the write-a-comment form
+router.get('/comment', withAuth, (req, res) => {
+  try {
+    res.render('comment', {
+      logged_in: req.session.logged_in,
+    });
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// POST to comment to create a new comment for that post
+router.post('/comment', async (req, res) => {
+  console.log(`\x1b[32m Data: ${JSON.stringify(req.body)}\x1b[0m`);
+  try {
+     
+      const postData = await Comment.create({
+        userid: req.session.user_id,
+        posttitle: req.body.postTitle,
+        postbody: req.body.postBody
+      });
+
+      if (!postData) {
+          res
+              .status(400)
+              .json({ status: 'error', message: 'Failed to create new postData' })
+          return
+      };
+
+      req.session.save(() => {
+        res.json({ status: 'ok', message: `\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`})
+      });
+      console.log(`\x1b[32m New Post: '${postData.posttitle}' is created\x1b[0m`);
+  } catch (err) {
+      res.status(404).json(err);
+  }
+});
+
+  // ====================
   //  /ABOUT
   // ====================
 
