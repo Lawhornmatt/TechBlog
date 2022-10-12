@@ -1,4 +1,4 @@
-<div class="row postRow col-10">
+<div class="row commentRow">
   {{#if (complexIf commenter sess_username)}}
   <div class="postHeaderUser">
     <p>#{{@index}} {{#if (complexIf commenterid opid)}}[OP]{{/if}} {{commenter}} says:</p>
@@ -11,6 +11,6 @@
   </div>
   {{/if}}
   <div class="postContent">
-    <p>{{commentbody}}</p>
+    <p class="text-wrap text-break">{{commentbody}}</p>
   </div>
 </div>

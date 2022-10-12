@@ -202,6 +202,14 @@ a.nostyle:visited {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.commentRow {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    max-width: 95%;
 }
 
 .postHeaderUser {
@@ -225,6 +233,7 @@ a.nostyle:visited {
     color: var(--main-1);
     border: medium solid var(--main-1);
     padding: 1rem 1rem 0 1rem;
+    /* overflow-wrap: break-word; */
 }
 
 /* ==== Button Classes ==== */

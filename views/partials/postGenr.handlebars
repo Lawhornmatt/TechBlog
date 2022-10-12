@@ -2,17 +2,17 @@
   <div class="row postRow">
     {{#if (complexIf sess_username user.username)}}
     <div class="postHeaderUser">
-      <p>{{posttitle}}</p>
+      <p class="text-wrap text-break">{{posttitle}}</p>
       <p>Posted by {{user.username}} on {{format_time createdAt}}</p>
     </div>
     {{else}}
     <div class="postHeaderForeign">
-      <p>{{posttitle}}</p>
+      <p class="text-wrap text-break">{{posttitle}}</p>
       <p>Posted by {{user.username}} on {{format_time createdAt}}</p>
     </div>
     {{/if}}
     <div class="postContent">
-      <p>{{postbody}}</p>
+      <p class="text-wrap text-break">{{postbody}}</p>
     </div>
   </div>
 </a>
