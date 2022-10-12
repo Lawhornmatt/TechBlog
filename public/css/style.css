@@ -209,12 +209,12 @@ a.nostyle:visited {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
-    max-width: 95%;
+    width: 95%;
 }
 
 .postHeaderUser {
     background-color: var(--main-1);
-    color: var(--main-5);
+    color: var(--main-4);
     padding: 1rem 1rem 0 1rem;
     display: flex;
     justify-content: space-between;
@@ -222,7 +222,7 @@ a.nostyle:visited {
 
 .postHeaderForeign {
     background-color: var(--main-1);
-    color: var(--main-6);
+    color: var(--main-5);
     padding: 1rem 1rem 0 1rem;
     display: flex;
     justify-content: space-between;
