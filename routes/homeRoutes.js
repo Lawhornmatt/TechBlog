@@ -476,7 +476,7 @@ router.post('/comment', async (req, res) => {
      
       const commentData = await Comment.create({
         userid: req.session.user_id,
-        postid: 1,
+        postid: req.session.last_viewed_post,
         commentbody: req.body.commentBody
       });
 
