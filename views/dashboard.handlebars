@@ -1,16 +1,16 @@
   <main class="container-fluid mt-3">
      <div class="row justify-content-around">
-      <div class="col-11 mb-3">
+      <div class="col-11 mb-3 d-flex flex-column align-items-center">
         {{#each edittedpostData as |post|}}
         {{>postGenr}}
         {{else}}
-        <p>The site is dead; There are no posts to display :(</p>
+        <p>Make your first post!</p>
         {{/each}}
+        <a href="/post" class="nostyle">
+          <div class="postHeaderUser d-flex justify-content-center">
+            <p>Create New Post</p>
+          </div>
+        </a>
       </div>
-      <a href="/post" class="nostyle">
-        <div class="postHeaderUser d-flex justify-content-center">
-          <p>Create New Post</p>
-        </div>
-      </a>
     </div>
   </main>

@@ -3,7 +3,9 @@
 
 :root {
 
-    --main-1: #1b0a09;
+    /* 1b0a09 */
+
+    --main-1: #160808; 
     --main-2: #A8190F;
     --main-3: #DF3B28;
     --main-4: #E8A551;
@@ -247,6 +249,10 @@ a.nostyle:visited {
     color: var(--main-6);
     height: auto;
     border: none;
+}
+
+.linkDiv {
+    width: 100%;
 }
 
 /* Other Classes */
