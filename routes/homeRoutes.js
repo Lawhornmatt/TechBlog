@@ -475,9 +475,9 @@ router.post('/comment', async (req, res) => {
   try {
      
       const commentData = await Comment.create({
-        userid: 1,
+        userid: req.session.user_id,
         postid: 1,
-        commentbody: "This is a test comment"
+        commentbody: req.body.commentBody
       });
 
       if (!commentData) {
