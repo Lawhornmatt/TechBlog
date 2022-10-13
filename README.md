@@ -30,19 +30,22 @@ This is the ReadMe for Matt Lawhorn's Challenge 14: Tech Blog
 
 This is a solo project showcasing my knowledge of MVC (Model - View - Controller) 
 
-<img src='INSERT PATH TO SCREENSHOT HERE' alt='A screenshot of Code Wars'/>
+<img src='./public/images/techblog_scrnsht.png' alt='A screenshot of the Tech Blog'/>
 
 <a name="installation"></a>
 
 ## INSTALLATION:
 
-In the future, Visit it on Heroku to try it out <a target="_blank" rel="noopener noreferrer" href="#">TBD</a>
+Visit it on <a target="_blank" rel="noopener noreferrer" href=" https://techblog-lawhornmatt.herokuapp.com/">Heroku to try it out</a>
 
 <a name="usage"></a>
 
 ## USAGE:
 
-TBD
+Without an account you can view all post on the site, and by clicking a post, view all the comments therein.  
+For more, make an account-- just do not use a real email or password.  
+From the dashboard, a logged in user can make a new post.  
+When viewing any post, a logged in user can leave comments.  
 
 <a name="contribution"></a>
 
