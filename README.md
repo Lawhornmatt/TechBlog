@@ -36,9 +36,7 @@ This is a solo project showcasing my knowledge of MVC (Model - View - Controller
 
 ## INSTALLATION:
 
-Visit it on <a target="_blank" rel="noopener noreferrer" href=" https://techblog-lawhornmatt.herokuapp.com/">Heroku to try it out</a>
-
-<a name="usage"></a>
+Visit it [here](https://techblog-lawhornmatt.herokuapp.com/) to try out
 
 ## USAGE:
 
